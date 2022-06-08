@@ -1,9 +1,15 @@
+require('events').EventEmitter.prototype._maxListeners = 100;
 const Discord = require('discord.js');
 const ms = require('ms');
 const client = new Discord.Client({
     intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES"]
 })
 
+try {
+    require(`dotenv`).config()
+} catch {
+
+}
 client.login(process.env.token);
 
 client.on("ready", () => {
